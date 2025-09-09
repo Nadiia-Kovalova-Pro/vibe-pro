@@ -3,6 +3,8 @@ from flaskr.models.tag_model import TagModel
 from flaskr.db import db
 
 
+app = create_app()
+
 def seed_tags():
     try:
         tag_names = [
@@ -28,22 +30,18 @@ def seed_tags():
             "Miscellaneous",
         ]
 
-        app = create_app()
+        for tag_name in tag_names:
+            data = {"name": tag_name}
+            new_tag = TagModel(**data)
+            db.session.add(new_tag)
+            db.session.commit()
 
-        with app.app_context():
-            for tag_name in tag_names:
-                data = {"name": tag_name}
-
-                new_tag = TagModel(**data)
-
-                db.session.add(new_tag)
-                db.session.commit()
-
-            print(f"Inserted new tags")
+        print(f"Inserted new tags")
     except Exception as err:
         db.session.rollback()
         print(f"Error while seeding: {err}")
 
 
 if __name__ == "__main__":
-    seed_tags()
+    with app.app_context():
+        seed_tags()
