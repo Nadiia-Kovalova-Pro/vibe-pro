@@ -20,3 +20,13 @@
   - Improved semantic HTML by changing `CardTitle` to use `<h2>` element instead of `<div>`
   - Enhanced type safety with generic types for better TypeScript support
   - Reduced code duplication while maintaining the same API and functionality
+
+## [2025-09-11]
+
+### Improved
+- Enhanced documentation in `frontend/src/components/ui/card.tsx`:
+  - Added comprehensive JSDoc comments to the `createCardComponent` factory function explaining its purpose, parameters, and return type
+  - Included inline comments within the function to clarify ref forwarding, semantic element usage, and class merging
+  - Added block comments for each exported card component (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter) describing their purpose, styling, and semantic HTML usage
+  - Improved overall code readability and maintainability for future developers
+
